@@ -63,8 +63,8 @@ export const styles = StyleSheet.create({
       marginHorizontal: 0,
       flexDirection: "row",
       flexWrap: "wrap",
-      paddingHorizontal: 6,
-      justifyContent: "space-between",
+      paddingHorizontal: 1,       //내 핸드폰 기준 1, 진영4
+      justifyContent: "flex-start",
     },
     gridItem: {
       width: 115,
@@ -74,6 +74,13 @@ export const styles = StyleSheet.create({
       margin: 2,
       justifyContent: "center",
       alignItems: "center",
+    },  
+    gridImage: {
+      width: "100%", // 부모 크기에 맞춤
+      height: "100%", // 부모 크기에 맞춤
+      borderRadius: 5,
+      marginBottom: 5,
+      resizeMode: "cover",
     },
     gridText: {
       color: "#555",
@@ -100,5 +107,6 @@ export const styles = StyleSheet.create({
       fontSize: 24,
       color: "#2D754E", 
     },
+  
   });
   

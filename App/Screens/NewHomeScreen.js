@@ -7,7 +7,8 @@ import MyScreen from '../Screens/Myscreen/MyScreen';
 import RecipeCommunityScreen from './RecipeCommunityScreen/Page';
 import ChatScreen from '../Screens/ChatScreen/ChatScreen';
 import CustomHeader from '../components/CustomHeader';
-import BoardScreen from '../Screens/BoardScreen'; 
+import PostList from '../PostList';
+import BoardScreen from '../Board/BoardScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,7 +47,7 @@ const TabNavigator = () => {
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      <Tab.Screen name="홈" component={HomeScreenContent} />
+      <Tab.Screen name="홈" component={BoardScreen} />
       <Tab.Screen name="커뮤니티" component={RecipeCommunityScreen} />
       <Tab.Screen name="동네 지도" component={MapScreen} />
       <Tab.Screen name="채팅" component={ChatScreen} />
@@ -57,7 +58,7 @@ const TabNavigator = () => {
 
 const HomeScreenContent = () => (
   <SafeAreaView style={styles.container}>
-    <BoardScreen />
+  <PostList/> 
   </SafeAreaView>
 );
 
