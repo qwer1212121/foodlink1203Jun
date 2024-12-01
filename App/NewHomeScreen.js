@@ -2,13 +2,13 @@ import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import MapScreen from '../Screens/MapScreen';
-import MyScreen from '../Screens/Myscreen/MyScreen';
-import RecipeCommunityScreen from './RecipeCommunityScreen/Page';
-import ChatScreen from '../Screens/ChatScreen/ChatScreen';
-import CustomHeader from '../components/CustomHeader';
-import PostList from '../PostList';
-import BoardScreen from '../Board/BoardScreen';
+import MapScreen from '../App/Login/MapScreen';
+import MyScreen from './Screens/Myscreen/MyScreen';
+import RecipeCommunityScreen from './Screens/RecipeCommunityScreen/Page';
+import ChatScreen from './Screens/ChatScreen/ChatScreen';
+import CustomHeader from './components/CustomHeader';
+import PostList from './PostList';
+import BoardScreen from './Board/BoardScreen';
 
 const Tab = createBottomTabNavigator();
 

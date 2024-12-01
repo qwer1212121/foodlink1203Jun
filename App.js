@@ -5,12 +5,12 @@ import TabNavigator from "./App/components/TabNavigator";
 import CategoryScreen from "./App/Screens/HeaderScreen/Category/CategoryScreen";
 import HeartScreen from "./App/Screens/HeaderScreen/Heart/HeartScreen";
 import IfmScreen from "./App/Screens/HeaderScreen/Ifm/IfmScreen";
-import LoginScreen from "./App/Screens/LoginScreen";
-import SignUp from "./App/Screens/SignUp";
-import LocationScreen from "./App/Screens/LocationScreen";
+import LoginScreen from "./App/Login/LoginScreen";
+import SignUp from "./App/Login/SignUp";
+import LocationScreen from "./App/Login/LocationScreen";
 import HomeScreen from "./App/Screens/HomeScreen";
 import CustomHeader from "./App/components/CustomHeader";
-import NewHomeScreen from "./App/Screens/NewHomeScreen";
+import NewHomeScreen from "./App/NewHomeScreen";
 import SignUpmodify from "./App/Screens/Modify/SignUpmodify";
 import Locationmodify from "./App/Screens/Modify/Locationmodify";
 import AlarmScreen from "./App/Screens/HeaderScreen/Alarm/AlarmScreen";
@@ -24,6 +24,16 @@ import MyPostModify from "./App/MyPostModify";
 import MyIngredientsScreen from "./App/Screens/RecipeCommunityScreen/Ingredients/MyIngredientsScreen";
 import IngredientDetailScreen from "./App/Screens/RecipeCommunityScreen/Ingredients/IngredientDetailScreen";
 import RecipeDetailScreen from "./App/Screens/RecipeCommunityScreen/Ingredients/RecipeDerailScreen";
+import RecipePost from "./App/Screens/RecipeCommunityScreen/Recipe/RecipePost";
+import MyRecipeList from "./App/Screens/RecipeCommunityScreen/Recipe/MyReipeList";
+import CmPostList from "./App/Screens/RecipeCommunityScreen/Community/CmPostList";
+import CmPost from "./App/Screens/RecipeCommunityScreen/Community/CmPost";
+import MyCmPost from "./App/Screens/RecipeCommunityScreen/Community/MyCmPost";
+import CmPostChat from "./App/Screens/RecipeCommunityScreen/Community/CmPostChat";
+import MyRecipePost from "./App/Screens/RecipeCommunityScreen/Recipe/MyRecipePost";
+import AddCmPost from "./App/Screens/RecipeCommunityScreen/Community/AddCmPost";
+import Page from "./App/Screens/RecipeCommunityScreen/Page";
+import ModifyCmPost from "./App/Screens/RecipeCommunityScreen/Community/ModifyCmPost";
 
 const Stack = createStackNavigator();
 
@@ -59,7 +69,22 @@ export default function App() {
           <Stack.Screen name="MyPostModify" component={MyPostModify} />
           <Stack.Screen name="MyIngredientsScreen" component={MyIngredientsScreen} />
           <Stack.Screen name="IngredientDetailScreen" component={IngredientDetailScreen} />
-          <Stack.Screen name="RecipeDetailScreen" component={RecipeDetailScreen} />
+          <Stack.Screen name="RecipePost" component={RecipePost} />
+          <Stack.Screen name="MyRecipeList" component={MyRecipeList} />
+          <Stack.Screen name="CmPost" component={CmPost} />
+          <Stack.Screen name="MyCmPost" component={MyCmPost} />
+          <Stack.Screen name="CmPostChat" component={CmPostChat} />
+          <Stack.Screen name="CmPostList" component={CmPostList} />
+          <Stack.Screen name="MyRecipePost" component={MyRecipePost} />
+          <Stack.Screen name="AddCmPost" component={AddCmPost} />
+          <Stack.Screen name="Page" component={Page} />
+          <Stack.Screen name="ModifyCmPost" component={ModifyCmPost} />
+          
+      
+      
+      
+      
+      
         </Stack.Navigator>
       </NavigationContainer>
   </PostProvider>
