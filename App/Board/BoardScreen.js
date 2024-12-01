@@ -13,7 +13,8 @@ import { styles } from "./BoardScreen.style";
 import { PostContext } from "../PostContext";
 
 const BoardScreen = ({ navigation, route }) => {
-  const { posts: contextPosts, addFavorite, removeFavorite, favorites } = useContext(PostContext); // favorites 추가
+  const { posts: contextPosts, addFavorite, removeFavorite, favorites } =
+    useContext(PostContext); // favorites 추가
   const [posts, setPosts] = useState(contextPosts);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -68,20 +69,24 @@ const BoardScreen = ({ navigation, route }) => {
     ]);
   };
 
-  const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase())
+  // 제목이 undefined일 경우를 처리하여 필터링
+  const filteredPosts = posts.filter(
+    (post) =>
+      post.title?.toLowerCase().includes(searchQuery.toLowerCase()) || false
   );
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
         data={filteredPosts}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item, index) => item.id?.toString() || index.toString()}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => handlePostPress(item)}>
             <Post
               item={item}
-              onEdit={() => navigation.navigate("EditPostScreen", { post: item })}
+              onEdit={() =>
+                navigation.navigate("EditPostScreen", { post: item })
+              }
               onDelete={handleDelete}
               onFavorite={() => handleFavorite(item)}
               onRemoveFavorite={() => handleRemoveFavorite(item.id)}
@@ -101,7 +106,8 @@ const Post = ({ item, onEdit, onDelete, onFavorite, onRemoveFavorite }) => {
 
     if (diffInSeconds < 60) return `1분 전`;
     if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}분 전`;
-    if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}시간 전`;
+    if (diffInSeconds < 86400)
+      return `${Math.floor(diffInSeconds / 3600)}시간 전`;
     return `${Math.floor(diffInSeconds / 86400)}일 전`;
   };
 
@@ -122,7 +128,7 @@ const Post = ({ item, onEdit, onDelete, onFavorite, onRemoveFavorite }) => {
       <View style={styles.contentContainer}>
         <View style={styles.titleContainer}>
           <View style={styles.statusIndicator} />
-          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.title}>{item.title || "제목 없음"}</Text>
         </View>
 
         <View style={styles.infoContainer}>
@@ -132,45 +138,20 @@ const Post = ({ item, onEdit, onDelete, onFavorite, onRemoveFavorite }) => {
           <Text style={styles.infoText}>{calculateTimeAgo(item.createdAt)}</Text>
         </View>
 
-        <Text style={styles.price}>{item.price}원</Text>
+        <Text style={styles.price}>{item.price || "가격 없음"}원</Text>
 
         <View style={styles.actionsContainer}>
-          {onEdit && (
-            <TouchableOpacity style={styles.actionButton} onPress={() => onEdit(item)}>
-              <MaterialIcons name="edit" size={16} color="#8C8C8C" />
-              <Text style={styles.actionText}>수정</Text>
-            </TouchableOpacity>
-          )}
-          {onDelete && (
-            <TouchableOpacity style={styles.actionButton} onPress={() => onDelete(item.id)}>
-              <MaterialIcons name="delete-outline" size={16} color="#8C8C8C" />
-              <Text style={styles.actionText}>삭제</Text>
-            </TouchableOpacity>
-          )}
+         
           {onFavorite && (
-            <TouchableOpacity style={styles.actionButton} onPress={() => onFavorite(item)}>
-              <MaterialIcons name="favorite" size={16} color="#F44336" />
-              <Text style={styles.actionText}>찜하기</Text>
-            </TouchableOpacity>
-          )}
-          {onRemoveFavorite && (
             <TouchableOpacity
               style={styles.actionButton}
-              onPress={() =>
-                Alert.alert("삭제 확인", "찜 목록에서 삭제하시겠습니까?", [
-                  { text: "취소", style: "cancel" },
-                  {
-                    text: "확인",
-                    onPress: () => onRemoveFavorite(item.id),
-                    style: "destructive",
-                  },
-                ])
-              }
+              onPress={() => onFavorite(item)}
             >
-              <MaterialIcons name="delete" size={16} color="#F44336" />
-              <Text style={styles.actionText}>찜 삭제</Text>
+              <MaterialIcons name="favorite" size={16} color="#F44336" />
+              <Text style={styles.actionText}>찜</Text>
             </TouchableOpacity>
           )}
+      
         </View>
       </View>
     </View>

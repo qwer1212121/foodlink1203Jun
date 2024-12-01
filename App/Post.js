@@ -72,7 +72,7 @@ const Post = ({ item, onEdit, onDelete, onFavorite, onRemoveFavorite }) => {
               onPress={() => onFavorite(item)}
             >
               <MaterialIcons name="favorite" size={16} color="#F44336" />
-              <Text style={styles.actionText}>찜하기</Text>
+              <Text style={styles.actionText}>찜</Text>
             </TouchableOpacity>
           )}
           {onRemoveFavorite && (

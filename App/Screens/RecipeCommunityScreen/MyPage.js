@@ -3,8 +3,9 @@ import { View, Text, Image, TouchableOpacity, ScrollView, Alert } from "react-na
 import { styles } from "../RecipeCommunityScreen/MyPage.style";
 import RecipeList from "./RecipeList"; 
 import * as ImagePicker from "expo-image-picker";
-
+import { useNavigation } from "@react-navigation/native"; // 네비게이션 훅 가져오기
 const MyPage = () => {
+  const navigation = useNavigation(); // 네비게이션 객체 가져오기
   const [ingredients, setIngredients] = useState(Array(5).fill(null)); 
   const [selectedTab, setSelectedTab] = useState("레시피"); 
 
@@ -38,7 +39,11 @@ const MyPage = () => {
       <View style={styles.myIngredientsSection}>
         <View style={styles.myIngredientsHeader}>
           <Text style={styles.headerText}>내 식자재</Text>
-          <TouchableOpacity style={styles.moreButton}>
+          {/* 더 보기 버튼 */}
+          <TouchableOpacity
+            style={styles.moreButton}
+            onPress={() => navigation.navigate("MyIngredientsScreen")} // 네비게이션 연결
+          >
             <Text style={styles.moreText}>더 보기</Text>
           </TouchableOpacity>
         </View>

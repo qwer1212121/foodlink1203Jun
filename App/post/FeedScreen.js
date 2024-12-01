@@ -51,9 +51,13 @@ const FeedScreen =  ({ route, navigation }) => {
 			  </TouchableOpacity>
 			  <Text style={styles.price}>{post.price?.toLocaleString() || "0"}원</Text>
 			</View>
-			<TouchableOpacity style={styles.chatButton}>
-			  <Text style={styles.chatButtonText}>채팅하기</Text>
-			</TouchableOpacity>
+			<TouchableOpacity
+				style={styles.chatButton}
+				onPress={() =>
+					navigation.navigate("MyPostModify", { post }) // 수정하기 버튼 눌렀을 때 이동
+				}>
+				<Text style={styles.chatButtonText}>수정하기</Text>
+        </TouchableOpacity>
 		  </View>
 	
 		  {/* 찜 확인 박스 */}

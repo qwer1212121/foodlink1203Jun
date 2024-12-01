@@ -20,6 +20,11 @@ import MyScreen from "./App/Screens/Myscreen/MyScreen"; // MyScreen import
 import MyPostWrite from "./App/MyPostWrite"; // MyPostWrite import
 import { PostProvider } from "./App/PostContext"; // PostProvider import
 import BoardScreen from "./App/Board/BoardScreen";
+import MyPostModify from "./App/MyPostModify";
+import MyIngredientsScreen from "./App/Screens/RecipeCommunityScreen/Ingredients/MyIngredientsScreen";
+import IngredientDetailScreen from "./App/Screens/RecipeCommunityScreen/Ingredients/IngredientDetailScreen";
+import RecipeDetailScreen from "./App/Screens/RecipeCommunityScreen/Ingredients/RecipeDerailScreen";
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -51,7 +56,10 @@ export default function App() {
           <Stack.Screen name="MyPostWrite" component={MyPostWrite} />
           <Stack.Screen name="FeedScreen" component={FeedScreen} />
           <Stack.Screen name="BoardScreen" component={BoardScreen} />
-
+          <Stack.Screen name="MyPostModify" component={MyPostModify} />
+          <Stack.Screen name="MyIngredientsScreen" component={MyIngredientsScreen} />
+          <Stack.Screen name="IngredientDetailScreen" component={IngredientDetailScreen} />
+          <Stack.Screen name="RecipeDetailScreen" component={RecipeDetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
   </PostProvider>
