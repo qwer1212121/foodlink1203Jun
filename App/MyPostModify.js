@@ -304,7 +304,7 @@ const MyPostModify = ({ navigation }) => {
 
           {/* 수정하기 버튼 */}
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.submitButton} onPress={validateAndSubmit}>
+            <TouchableOpacity style={styles.submitButton} onPress={() => navigation.goBack()}>
               <Text style={styles.submitButtonText}>수정하기</Text>
             </TouchableOpacity>
           </View>

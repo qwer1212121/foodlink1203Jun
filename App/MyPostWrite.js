@@ -137,10 +137,10 @@ const MyPostWrite = ({ navigation }) => {
       Alert.alert("입력 오류", "카테고리를 한 개 이상 선택해야 합니다.");
       return;
     }
-
+  
     // 새로운 게시물 추가
     addPost({
-      id: Date.now().toString(), // 고유한 ID 추가
+      id: Date.now().toString(),
       title,
       description,
       categories: selectedCategories,
@@ -148,9 +148,13 @@ const MyPostWrite = ({ navigation }) => {
       images: images.filter((image) => image !== null),
       priceOrExchange,
     });
-
+  
     Alert.alert("추가 완료", "게시물이 추가되었습니다.");
-    navigation.navigate("MyScreen"); // MyScreen으로 이동
+  
+    // "내 게시판" 탭으로 이동
+    navigation.navigate("TabNavigator", {
+      screen: "내 게시판",
+    });
   };
   
   return (
@@ -296,7 +300,7 @@ const MyPostWrite = ({ navigation }) => {
             <Text style={styles.labelText}>가격 혹은 나눔, 교환을 작성해주세요.</Text>
             <TextInput
               style={styles.inputBox}
-              placeholder="예: 5000원, 무료 나눔, 물물교환 제안 등"
+              placeholder="예: 5000원, 나눔, 교환"
               value={priceOrExchange}
               onChangeText={setPriceOrExchange}
             />
@@ -304,7 +308,7 @@ const MyPostWrite = ({ navigation }) => {
 
           {/* 추가하기 버튼 */}
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.submitButton} onPress={validateAndSubmit}>
+            <TouchableOpacity style={styles.submitButton} onPress={() => navigation.goBack()}>
               <Text style={styles.submitButtonText}>추가하기</Text>
             </TouchableOpacity>
           </View>

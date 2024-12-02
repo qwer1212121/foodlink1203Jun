@@ -10,7 +10,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { styles } from "../RecipeCommunityScreen/MyPage.style";
 import CmPostList from "./Community/CmPostList"; // CmPostList 컴포넌트
-import RecipeList from "./Recipe/MyReipeList"; // RecipeList 컴포넌트
+import RecipeList from "../RecipeCommunityScreen/Recipe/RecipeList"; // RecipeList 컴포넌트
 import * as ImagePicker from "expo-image-picker";
 
 const MyPage = () => {

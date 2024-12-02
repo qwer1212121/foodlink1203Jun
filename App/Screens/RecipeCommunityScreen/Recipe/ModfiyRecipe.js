@@ -9,11 +9,11 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
-import { styles } from "../../../styles/RecipeCommunity/RecipePost.style";
+import { styles } from "../../../styles/RecipeCommunity/ModfiyRecipe.style"
 import NavigateBefore from "../../../components/NavigateBefore"; // NavigateBefore 컴포넌트
 import * as ImagePicker from "expo-image-picker"; // 이미지 추가 라이브러리
 
-const RecipePost = ({ navigation }) => {
+const ModifyRecipe = ({ navigation }) => {
   const [images, setImages] = useState(Array(5).fill(null)); // 사진 상태
 
   // 이미지 추가 핸들러
@@ -48,7 +48,7 @@ const RecipePost = ({ navigation }) => {
       {/* Header */}
       <View style={styles.header}>
         <NavigateBefore onPress={() => navigation.goBack()} />
-        <Text style={styles.title}>레시피 추가</Text>
+        <Text style={styles.title}>레시피 수정</Text>
         <View style={styles.emptySpace} />
       </View>
 
@@ -102,11 +102,11 @@ const RecipePost = ({ navigation }) => {
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.submitButton}
             onPress={() => navigation.goBack()}>
-            <Text style={styles.submitButtonText}>추가하기</Text>
+            <Text style={styles.submitButtonText}>수정하기</Text>
           </TouchableOpacity>
         </View>
     </SafeAreaView>
   );
 };
 
-export default RecipePost;
+export default ModifyRecipe;

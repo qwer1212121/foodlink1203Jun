@@ -77,13 +77,13 @@ const styles = StyleSheet.create({
   },
   recipeTitle: {
     color: "black",
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: "bold",
     marginBottom: 5,
   },
   recipeAuthor: {
     color: "#8C8C8C",
-    fontSize: 10,
+    fontSize: 12,
   },
 });
 

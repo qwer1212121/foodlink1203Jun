@@ -4,6 +4,12 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFFFFF",
   },
+  postContainer: {
+    flex: 1,
+    marginTop: 10,
+    paddingHorizontal: 10,
+  },
+  
   myIngredientsSection: {
     padding: 15,
     borderBottomWidth: 6,

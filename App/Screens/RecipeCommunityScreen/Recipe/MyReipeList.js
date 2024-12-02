@@ -1,23 +1,69 @@
 import React from "react";
-import { View, Text, Image, FlatList, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  ActionSheetIOS,
+  Alert,
+} from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native"; // useNavigation 훅 임포트
+
+// 고유 ID를 생성하는 함수
+const generateId = () => Math.random().toString(36).substr(2, 9);
 
 const MyRecipeList = () => {
+  const navigation = useNavigation(); // navigation 객체 가져오기
+
   // 레시피 데이터
-  const recipes = Array(5).fill({
-    uri: null, // 이미지 URL 대신 null로 설정
+  const recipes = Array(8).fill(null).map(() => ({
+    id: generateId(), // 고유 ID 생성
+    uri: null,
     title: "레시피 제목",
     author: "작성자",
-  });
+  }));
+
+  // 옵션 버튼 핸들러
+  const showOptions = (recipe) => {
+    ActionSheetIOS.showActionSheetWithOptions(
+      {
+        options: ["게시글 수정", "삭제", "닫기"],
+        destructiveButtonIndex: 1, // "삭제"를 빨간색으로 표시
+        cancelButtonIndex: 2, // "닫기" 버튼의 인덱스
+      },
+      (buttonIndex) => {
+        if (buttonIndex === 0) {
+          // 수정 화면으로 이동
+          navigation.navigate("ModifyRecipe", { recipe }); // recipe 데이터 전달
+        } else if (buttonIndex === 1) {
+          Alert.alert(
+            "게시물 삭제",
+            "정말로 삭제하시겠습니까?",
+            [
+              { text: "취소", style: "cancel" },
+              {
+                text: "삭제",
+                onPress: () => console.log(`레시피 ${recipe.title} 삭제됨`),
+              },
+            ],
+            { cancelable: true }
+          );
+        }
+      }
+    );
+  };
 
   return (
     <FlatList
       data={recipes}
-      keyExtractor={(item, index) => index.toString()}
-      numColumns={2} // 2열로 설정
-      columnWrapperStyle={styles.row} // 열 간격 스타일
+      keyExtractor={(item) => item.id} // 고유 ID를 키로 설정
+      numColumns={2}
+      columnWrapperStyle={styles.row}
       renderItem={({ item }) => (
         <View style={styles.recipeCard}>
-          {/* 이미지 부분 */}
           <View style={styles.recipeImage}>
             {item.uri ? (
               <Image source={{ uri: item.uri }} style={styles.image} />
@@ -27,14 +73,19 @@ const MyRecipeList = () => {
               </View>
             )}
           </View>
-          {/* 텍스트 정보 */}
           <View style={styles.recipeInfo}>
             <Text style={styles.recipeTitle}>{item.title}</Text>
             <Text style={styles.recipeAuthor}>{item.author}</Text>
+            <TouchableOpacity
+              style={styles.optionsButton}
+              onPress={() => showOptions(item)}
+            >
+              <MaterialIcons name="more-vert" size={14} color="#8E8E8E" />
+            </TouchableOpacity>
           </View>
         </View>
       )}
-      showsVerticalScrollIndicator={false} // 스크롤바 숨김
+      showsVerticalScrollIndicator={false}
     />
   );
 };
@@ -55,6 +106,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
+    position: "relative", // 옵션 버튼 위치 조정을 위해
   },
   recipeImage: {
     width: "100%",
@@ -74,6 +126,7 @@ const styles = StyleSheet.create({
   },
   recipeInfo: {
     padding: 10,
+    position: "relative",
   },
   recipeTitle: {
     color: "black",
@@ -84,6 +137,13 @@ const styles = StyleSheet.create({
   recipeAuthor: {
     color: "#8C8C8C",
     fontSize: 12,
+    marginBottom: 5,
+  },
+  optionsButton: {
+    position: "absolute",
+    right: 0,
+    top: 0,
+    padding: 5,
   },
 });
 

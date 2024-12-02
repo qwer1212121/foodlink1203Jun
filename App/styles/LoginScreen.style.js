@@ -5,6 +5,10 @@ export const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#ffffff",
     },
+    safeArea: {
+        flex: 1,
+        backgroundColor: "#ffffff", // 배경색 설정
+      },
     container: {
         alignItems: "center",
         flexDirection: "column",
@@ -43,9 +47,9 @@ export const styles = StyleSheet.create({
       shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.25,
       shadowRadius: 4,
-      marginTop: 200,
-      alignItems: "center",
-      justifyContent: "center",
+      marginTop: 200, // 이미지 상단 여백
+      alignItems: "center", // 이미지의 수평 정렬
+      justifyContent: "center", // 이미지의 수직 정렬
   },
   
     avatar: {
@@ -86,7 +90,7 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginBottom: 70,
-        marginTop: 50,
+        marginTop: 50, // 이미지 상단 여백
     },
     loginButtonText: {
         color: "#ffffff",
@@ -95,10 +99,10 @@ export const styles = StyleSheet.create({
     },
     
     signupButtonContainer: {
-        position: "absolute", 
-        bottom: 20, 
-        alignItems: "center", 
-        width: "100%", 
+        position: "absolute", // 절대 위치로 설정
+        bottom: 20, // 화면 아래에서 20px 위로 설정
+        alignItems: "center", // 수평 정렬
+        width: "100%", // 컨테이너가 화면의 너비를 가득 채우도록 설정
     },
     signupButtonText: {
         color: "#bfbfbf",

@@ -34,7 +34,7 @@ import MyRecipePost from "./App/Screens/RecipeCommunityScreen/Recipe/MyRecipePos
 import AddCmPost from "./App/Screens/RecipeCommunityScreen/Community/AddCmPost";
 import Page from "./App/Screens/RecipeCommunityScreen/Page";
 import ModifyCmPost from "./App/Screens/RecipeCommunityScreen/Community/ModifyCmPost";
-
+import ModifyRecipe from "./App/Screens/RecipeCommunityScreen/Recipe/ModfiyRecipe";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -79,10 +79,7 @@ export default function App() {
           <Stack.Screen name="AddCmPost" component={AddCmPost} />
           <Stack.Screen name="Page" component={Page} />
           <Stack.Screen name="ModifyCmPost" component={ModifyCmPost} />
-          
-      
-      
-      
+          <Stack.Screen name="ModifyRecipe" component={ModifyRecipe} />     
       
       
         </Stack.Navigator>

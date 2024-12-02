@@ -45,7 +45,7 @@ const ModifyCmPost = ({ navigation }) => {
         {/* 저장하기 버튼 */}
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.submitButton}
-            onPress={() => navigation.navigate("Page")}>
+            onPress={() => navigation.goBack()}>
             <Text style={styles.submitButtonText}>저장하기</Text>
           </TouchableOpacity>
         </View>

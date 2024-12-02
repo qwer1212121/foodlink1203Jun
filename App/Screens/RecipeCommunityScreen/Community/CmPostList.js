@@ -3,17 +3,20 @@ import { FlatList, SafeAreaView, Alert, ActionSheetIOS } from "react-native";
 import CmPost from "../Community/CmPost"; // CmPost 컴포넌트
 import { styles } from "../../../styles/RecipeCommunity/CmPostList.style";
 
+// 고유 ID를 생성하는 함수
+const generateId = () => Math.random().toString(36).substr(2, 9);
+
 const CmPostList = ({ navigation }) => {
   // 예시 데이터
-  const posts = Array(5).fill({
-    id: Math.random().toString(),
+  const posts = Array(5).fill(null).map(() => ({
+    id: generateId(), // 고유 ID 생성
     title: "제목",
     content: "게시물 내용",
     distance: "3km",
     time: "3일전",
     comments: 2,
     likes: 7,
-  });
+  }));
 
   // 옵션 버튼 핸들러
   const handleOptionsPress = (post) => {
@@ -57,7 +60,7 @@ const CmPostList = ({ navigation }) => {
     <SafeAreaView style={styles.safeArea}>
       <FlatList
         data={posts}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id} // 고유 ID를 키로 설정
         renderItem={renderItem}
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}

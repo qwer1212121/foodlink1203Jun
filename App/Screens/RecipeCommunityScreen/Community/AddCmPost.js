@@ -46,7 +46,7 @@ const AddCmPost = ({ navigation }) => {
         {/* 추가하기 버튼 */}
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.submitButton}
-            onPress={() => navigation.navigate("Page")}>
+            onPress={() => navigation.goBack()}>
             <Text style={styles.submitButtonText}>추가하기</Text>
           </TouchableOpacity>
         </View>
